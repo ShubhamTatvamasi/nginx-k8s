@@ -10,4 +10,9 @@ Delete from k8s
 kubectl delete -f .
 ```
 
+Get node info
+```bash
+kubectl get nodes -o wide
+```
+
 open your node IP with 30080 port
