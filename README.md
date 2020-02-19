@@ -16,3 +16,10 @@ kubectl get nodes -o wide
 ```
 
 open your node IP with 30080 port
+
+---
+
+Alt command
+```
+kubectl run nginx --image=nginx:alpine --expose --port=80 --restart=Never
+```
