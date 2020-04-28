@@ -21,6 +21,11 @@ open your node IP with 30080 port
 
 Alt command
 ```bash
-kubectl run nginx --image=nginx:alpine --restart=Never --expose --port=80
-kubectl patch svc nginx -p '{"spec": {"type": "NodePort"}}'
+kubectl run nginx --image=nginx:alpine --restart=Never --port=80 --expose
+
+kubectl patch svc nginx \
+  --patch='{"spec": {"type": "NodePort"}}'
+
+kubectl patch svc nginx \
+  --patch='{"spec": {"ports": [{"nodePort": 30080, "port": 80}]}}'
 ```
