@@ -38,7 +38,7 @@ kubectl expose deployment nginx --port=80 --name=nginx
 
 delete deployment and service:
 ```bash
-kubectl delete deploy/nginx svc/nginx
+kubectl delete deploy/nginx svc/nginx ing/nginx
 ```
 
 Ingress value for nginx
