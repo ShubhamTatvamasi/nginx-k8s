@@ -30,10 +30,15 @@ kubectl patch svc nginx \
   --patch='{"spec": {"ports": [{"nodePort": 30080, "port": 80}]}}'
 ```
 
-create a deployment:
+create a deployment and service:
 ```bash
 kubectl create deployment nginx --image=nginx:alpine
 kubectl expose deployment nginx --port=80 --name=nginx
+```
+
+delete deployment and service:
+```bash
+kubectl delete deploy/nginx svc/nginx
 ```
 
 Ingress value for nginx
