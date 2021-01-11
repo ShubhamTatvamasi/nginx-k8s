@@ -19,7 +19,7 @@ open your node IP with 30080 port
 
 ---
 
-Alt command
+Create a pod
 ```bash
 kubectl run nginx --image=nginx:alpine --port=80 --expose
 
@@ -30,6 +30,13 @@ kubectl patch svc nginx \
   --patch='{"spec": {"ports": [{"nodePort": 30080, "port": 80}]}}'
 ```
 
+create a deployment:
+```bash
+kubectl create deployment nginx --image=nginx:alpine
+kubectl expose deployment nginx --port=80 --name=nginx
+```
+
+Ingress value for nginx
 ```bash
 kubectl apply -f - << EOF
 apiVersion: networking.k8s.io/v1beta1
