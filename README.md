@@ -48,17 +48,18 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   tls:
     - hosts:
       - nginx.k8s.shubhamtatvamasi.com
-      secretName: letsencrypt
+      secretName: letsencrypt-nginx
   rules:
     - host: nginx.k8s.shubhamtatvamasi.com
       http:
         paths:
-        - path: /
-          backend:
+        - backend:
             serviceName: nginx
             servicePort: 80
 EOF
