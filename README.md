@@ -44,7 +44,7 @@ kubectl delete deploy/nginx svc/nginx ing/nginx
 Ingress value for nginx
 ```bash
 kubectl apply -f - << EOF
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nginx
@@ -52,15 +52,19 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt
 spec:
   tls:
-    - hosts:
+  - hosts:
       - nginx.k8s.shubhamtatvamasi.com
-      secretName: letsencrypt-nginx
+    secretName: nginx-tls
   rules:
-    - host: nginx.k8s.shubhamtatvamasi.com
-      http:
-        paths:
-        - backend:
-            serviceName: nginx
-            servicePort: 80
+  - host: nginx.k8s.shubhamtatvamasi.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx
+            port:
+              number: 80
 EOF
 ```
