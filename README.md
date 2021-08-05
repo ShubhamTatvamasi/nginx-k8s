@@ -68,3 +68,8 @@ spec:
               number: 80
 EOF
 ```
+
+curl internal service:
+```bash
+curl http://nginx.default.svc.cluster.local
+```
