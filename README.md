@@ -1,5 +1,11 @@
 # nginx-k8s
 
+deploy LoadBalancer nginx:
+```bash
+kubectl create deployment nginx --image=nginx:alpine
+kubectl expose deployment nginx --port=80 --name=nginx --type=LoadBalancer
+```
+
 Deploy on k8s
 ```bash
 kubectl apply -f .
