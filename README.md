@@ -6,6 +6,18 @@ kubectl create deployment nginx --image=nginx:alpine
 kubectl expose deployment nginx --port=80 --name=nginx --type=LoadBalancer
 ```
 
+Patch Public IP:
+```bash
+kubectl patch svc nginx \
+  -p '{"spec": {"loadBalancerIP": "10.10.10.10"}}'
+```
+
+Delete deployment and service:
+```bash
+kubectl delete deploy/nginx svc/nginx
+```
+
+---
 Deploy on k8s
 ```bash
 kubectl apply -f .
